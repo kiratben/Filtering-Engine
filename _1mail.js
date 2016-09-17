@@ -1,4 +1,5 @@
 
+
 function rxArray(r) {
 
 	var Rules = new Array();
@@ -15,3 +16,19 @@ function rxArray(r) {
 
 	return Rules;
 }
+
+
+function MessageRule(r,messageObj,rArray) {
+
+	if (RuleRegEx(messageObj.from,r.from) && RuleRegEx(messageObj.to,r.to)){
+
+			rArray.push(r.action);
+	}
+}
+
+function RuleRegEx(str,regExp) {
+	
+	return str.search(regExp) == 0;
+}
+
+
