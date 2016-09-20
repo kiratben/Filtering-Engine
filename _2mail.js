@@ -31,8 +31,27 @@ exports.filter = function (messages, rules) {
                 return false;
             }
         }
-        return true;
-   
+        return true; 
     }
 
+   var g = {};
+
+    for (var m in messages) {
+
+        g[m] = [];
+
+        var msg = messages[m];
+
+        for (var l = 0; l < rules.length; l++) {
+
+            var rul = rules[l];
+
+            if (fFunc(msg.from, rul.from) && fFunc(msg.to, rul.to)) {
+
+                g[m].push(rul.action);
+            }
+        }
+    }
+
+    return g;
 };
